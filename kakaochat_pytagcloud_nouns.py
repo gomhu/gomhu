@@ -1,12 +1,16 @@
 #!__*__coding:utf-8__*__
 import collections
 import pytagcloud
+from konlpy.tag import Twitter
 import os
 
-# 인코딩 ANSI로 바꿔서 저장해야 돌아감. -> encoding 수정.
+twit=Twitter()
+
+# 인코딩 ANSI로 바꿔서 저장해야 돌아감.
 
 # 한글로 하려면 Noto Sans CJK 글꼴 설치
 #install pytagcloud, pygame, simplejson
+# Install kolnpy 
 
 # 텍스트파일 내용
 # 2018년 1월 29일 오후 4:12, 회원님 : ㅇㅇㅇ
@@ -15,13 +19,12 @@ import os
 
 # 띄어쓰기로 구분
 
-
 directory = input("카카오톡 대화 txt 파일이 있는 디렉토리를 입력하세요. 예) e:\pythondata")
 filename = input("txt파일명을 입력하세요. 예) kakao.txt")
 save_file_name = input("저장할 파일 이름명을 입력하세요. 예)kakao.png")
 full_directory = os.path.join(directory, filename)
 x=[]
-f = open(full_directory, "r", encoding="UTF-8") #파일위치 파일명 입력
+f = open("e:\\pythondata\\" + filename, "r", encoding="UTF-8") #파일위치 파일명 입력
 while True:
     a=f.readline()
     if a=="":
@@ -78,8 +81,12 @@ for word in x:
     if word not in remove_list:
         new.append(word)
 
+#다시 string으로 바꿔 명사만 골라 처리
+new_to_string=" ".join(new)
+nouns=twit.nouns(new_to_string)
+b = collections.Counter(nouns)
+
 #상위 50개만 합시다.
-b = collections.Counter(new)
 top_50 = b.most_common(50)
 print(top_50)
 
@@ -90,5 +97,3 @@ tags = pytagcloud.make_tags(d)
 pytagcloud.create_tag_image(tags, save_file_name,  fontname='Noto Sans CJK')
 #저장할 파일 이름명에 입력
 
-
-# "ㅋㅋㅋㅋㅋㅋㅋㅋ" 등을 처리해야할지..
