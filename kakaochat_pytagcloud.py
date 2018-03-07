@@ -3,7 +3,7 @@ import collections
 import pytagcloud
 import os
 
-# 인코딩 ANSI로 바꿔서 저장해야 돌아감. -> encoding 수정.
+# 인코딩 ANSI로 바꿔서 저장해야 돌아갔으나 밑에 (encoding="UTF-8")로 해결하였음
 
 # 한글로 하려면 Noto Sans CJK 글꼴 설치
 #install pytagcloud, pygame, simplejson

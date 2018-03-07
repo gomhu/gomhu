@@ -6,11 +6,11 @@ import os
 
 twit=Twitter()
 
-# 인코딩 ANSI로 바꿔서 저장해야 돌아감.
+# 인코딩 ANSI로 바꿔서 저장해야 돌아갔으나 밑에 (encoding="UTF-8")로 해결하였음
 
 # 한글로 하려면 Noto Sans CJK 글꼴 설치
 #install pytagcloud, pygame, simplejson
-# Install kolnpy 
+# Install kolnpy
 
 # 텍스트파일 내용
 # 2018년 1월 29일 오후 4:12, 회원님 : ㅇㅇㅇ
@@ -24,7 +24,7 @@ filename = input("txt파일명을 입력하세요. 예) kakao.txt")
 save_file_name = input("저장할 파일 이름명을 입력하세요. 예)kakao.png")
 full_directory = os.path.join(directory, filename)
 x=[]
-f = open("e:\\pythondata\\" + filename, "r", encoding="UTF-8") #파일위치 파일명 입력
+f = open(full_directory, "r", encoding="UTF-8") #파일위치 파일명 입력
 while True:
     a=f.readline()
     if a=="":
